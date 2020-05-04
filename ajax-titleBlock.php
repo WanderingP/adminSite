@@ -138,6 +138,20 @@ default:
         <textarea style="display:none" name="downloadTSV"><?php echo $download ?></textarea>
         <input id="submit" type="submit" value="Download TSV" />
         </form>
+
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <form>
+              <label>Drawn By: <input id="revdrawn" type="text"/></label>
+              <label>Checked By: <input id="revchecked" type="text"/></label>
+              <label>Approved By: <input id="revapproved" type="text"/></label>
+              <label>Description: <input id="revdescription" type="text"/></label>
+              <input type="button" id="revsion" value="Revision" onclick="titleBlock.revision()">
+            </form>
+          </div>
+        </div>
+
      
     
     
@@ -174,6 +188,7 @@ default:
                           <td class='left'>
                             <input type='button' value='update' onclick='titleBlock.update(".$t['id'].")' />
                             <input type='button' value='Delete' onclick='titleBlock.del(".$t['id'].")' />
+                            <button id='popup' onclick='titleBlock.popup()'>Revision</button>
                             <input type='hidden' id='id' value='".$t['id']."' />
                             
                           </td>
@@ -239,15 +254,19 @@ default:
                 );
               }
               echo "</tbody></table></div>";
+
             } else {
               echo "<div>No data found.</div>";
             }
             break;
-    
 
-
-
+    case "revision":
+      var_dump($_POST);
+      
     }
+
+  
+
 
 
 
